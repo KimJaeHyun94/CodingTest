@@ -1,16 +1,18 @@
 <img src="https://ifh.cc/g/BjmI7Q.png" height ="600px" width="600px"></img>
 
 
-
+#
 # 📢프로젝트 소개
 
-
+#
 매일매일 코딩 테스트 준비를 하며 알고리즘을 푸는 프로젝트입니다..
 
 <img src ="https://img.shields.io/badge/tool-Eclipse-red"></img>
 <img src ="https://img.shields.io/badge/Language-Java-skyblue"></img>
 
 
+#
+#
 
 # ✍ Ground Rule
 
@@ -21,7 +23,8 @@
 * merge 후 브랜치 지우기
 
 
-
+#
+#
 
 # 💪기여 방법
 
@@ -35,7 +38,7 @@
 * AWS 서버의 작동 유무를 확인하십시오.
 
 
-
+#
 ## Git Rules 
 * git pull origin 
 * develop를 통해 develop와 먼저 merge 한 상태로 진행합니다.
@@ -46,8 +49,8 @@
 * git bash에서 merge request를 신청합니다. 
 
 
-
-
+#
+#
 # 📜License
 
 
