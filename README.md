@@ -1,36 +1,27 @@
 <img src="https://ifh.cc/g/BjmI7Q.png" height ="600px" width="600px"></img> 
-
-
   
-  
+<br/>  
+
 # 📢프로젝트 소개
-
-  
   
 매일매일 코딩 테스트 준비를 하며 알고리즘을 푸는 프로젝트입니다..
 
 <img src ="https://img.shields.io/badge/tool-Eclipse-red"></img>
 <img src ="https://img.shields.io/badge/Language-Java-skyblue"></img>
   
-  
-  
+<br/>    
+
 # ✍ Ground Rule
-
-
 
 * 1일 1 commit
 * 1주 1 merge request
 * merge 후 브랜치 지우기
+  
+<br/>    
 
-
-  
-  
-  
 # 💪기여 방법
 
-
-  
-  
+<br/>  
   
 ## 고려 사항
 
@@ -39,6 +30,7 @@
 * 이 단계를 명시적으로 작성하십시오.
 * AWS 서버의 작동 유무를 확인하십시오.
 
+<br/>  
 
 ## Git Rules 
 * git pull origin 
@@ -50,7 +42,8 @@
 * git bash에서 merge request를 신청합니다. 
   
   
-  
+<br/> 
+
 # 📜License
 
 
