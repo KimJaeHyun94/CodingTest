@@ -19,7 +19,7 @@ public class 순위검색_2 {
 				"- and backend and senior and - 150", "- and - and - and chicken 100", "- and - and - and - 150" };
 		System.out.println(Arrays.toString(solution(info, query)));
 	}
-
+	
 	static HashMap<String, ArrayList<Integer>> map;
 
 	public static int[] solution(String[] info, String[] query) {
