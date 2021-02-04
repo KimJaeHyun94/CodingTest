@@ -1,10 +1,8 @@
 package M0204;
 
-public class 광고삽입_초기 {
+public class 광고삽입 {
 	static String[] log = { "01:20:15-01:45:14", "00:40:31-01:00:00", "00:25:50-00:48:29", "01:30:59-01:53:29",
 			"01:37:44-02:02:30" };
-	static long total[]; // 재생 구간의 개수 (long으로 안할 시 18번 케이스 탈락)
-	static int advtime;
 
 	public static void main(String[] args) {
 		System.out.println(solution("02:03:55", "00:14:15", log));
@@ -17,13 +15,13 @@ public class 광고삽입_초기 {
 		int sec = Integer.parseInt(sta[2]);
 
 		int playtime = hour + min + sec; // 동영상 재생시간
-		total = new long[playtime + 1];
+		long total[] = new long[playtime + 1]; // 재생 구간의 개수 (long으로 안할 시 18번 케이스 탈락)
 		String sta2[] = adv_time.split(":");
 		hour = Integer.parseInt(sta2[0]) * 3600; // 초로 환산
 		min = Integer.parseInt(sta2[1]) * 60;
 		sec = Integer.parseInt(sta2[2]);
 
-		advtime = hour + min + sec; // 공익광고의 재생시간
+		int advtime = hour + min + sec; // 공익광고의 재생시간
 
 		for (String str : logs) {
 			String[] split = str.split("-");
@@ -41,18 +39,28 @@ public class 광고삽입_초기 {
 			sec = Integer.parseInt(sta4[2]);
 			int ending = hour + min + sec;
 
-			for (int i = starting; i < ending; i++) { 
+			// total[starting]++; // 시작하니까 한 개 증가
+			for (int i = starting; i < ending; i++) { // 이해하기 쉽게 for문으로 수정
 				total[i]++;
 			}
+			// total[ending]--; // 끝낫다는 표시
 		}
+
+		for (int i = 1; i <= playtime; i++) { // 재생시간까지 1초간의 구간을 포함하는 재생 구간의 개수
+			total[i] += total[i - 1];
+		}
+
+//		for (int i = 1; i < playtime; i++) { // 똑같은 반복문 한 번 더 실행
+//			total[i] += total[i - 1];
+//		}
 
 		int max = 0;
 		long at = total[advtime - 1];
 
-		for (int i = advtime; i <= playtime; i++) { 
-			if (at < Sol(i)) {
-				at = Math.max(at, Sol(i));
-				max = i - advtime;
+		for (int i = advtime; i <= playtime; i++) { // 돌면서 가장누적 시간이 많은 구간을 고른다.
+			if (at < total[i] - total[i - advtime]) {
+				at = Math.max(at, total[i] - total[i - advtime]);
+				max = i - advtime + 1;
 			}
 		}
 		hour = max / 3600;
@@ -78,13 +86,5 @@ public class 광고삽입_초기 {
 		}
 
 		return sb.toString();
-	}
-
-	private static long Sol(int i) {
-		long sum = 0;
-		for (int j = i-advtime; j < i; j++) {
-			sum += total[j];
-		}
-		return sum;
 	}
 }
