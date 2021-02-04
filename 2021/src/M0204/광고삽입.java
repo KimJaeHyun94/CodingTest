@@ -22,7 +22,9 @@ public class 광고삽입 {
 		sec = Integer.parseInt(sta2[2]);
 
 		int advtime = hour + min + sec; // 공익광고의 재생시간
-
+		if(advtime==playtime) {
+			return "00:00:00";
+		}
 		for (String str : logs) {
 			String[] split = str.split("-");
 			String sta3[] = split[0].split(":");

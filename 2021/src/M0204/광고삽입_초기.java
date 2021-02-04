@@ -47,7 +47,7 @@ public class 광고삽입_초기 {
 		}
 
 		int max = 0;
-		long at = total[advtime - 1];
+		long at = 0;
 
 		for (int i = advtime; i <= playtime; i++) { 
 			if (at < Sol(i)) {
