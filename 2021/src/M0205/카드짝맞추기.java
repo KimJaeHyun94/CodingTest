@@ -93,7 +93,7 @@ public class 카드짝맞추기 {
 			for (int d = 0; d < dirs.length; d++) {
 				int nr = 0, nc = 0;
 				int r = node.r, c = node.c;
-				while (true) {   		      //원래 방향대로 쭉 간다(다른 숫자를 만나기 전까지
+				while (true) {   				//원래 방향대로 쭉 간다(다른 숫자를 만나기 전까지
 					nr = r + dirs[d][0];
 					nc = c + dirs[d][1];
 					if (!isInMap(nr, nc)) {   //맵보다 크면 그 전까지 간다
