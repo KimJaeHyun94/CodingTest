@@ -6,6 +6,7 @@ public class 좋은아침 {
 	public static void main(String[] args) {
 		subset(4,0);
 		permutation(3,0,new char[3],new boolean[chars.length]);
+		System.out.println();
 		combination(3,0,0,new char[3]);
 		
 	}
