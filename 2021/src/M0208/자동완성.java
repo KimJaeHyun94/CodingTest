@@ -18,7 +18,6 @@ public class 자동완성 {
 	static class Node { // node
 		private static final int ALPHA_CNT = 26;
 		private final Node[] children = new Node[ALPHA_CNT + 1];
-		private boolean isEnd;
 		private int cnt;
 	}
 
@@ -45,7 +44,6 @@ public class 자동완성 {
 				
 				cur = cur.children[cIdx];
 			}
-			cur.isEnd = true;
 		}
 
 		public int count(final String query) {

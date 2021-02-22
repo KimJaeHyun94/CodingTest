@@ -63,7 +63,6 @@ public class 가사검색trie {
 
 		static class Node { // node
 			private final HashMap<Character, Node> children;   //자식 노드
-			private boolean isEnd;   //마지막인지 체크 
 			private int cnt;   //개수 세기
  
 			Node() {
@@ -92,7 +91,6 @@ public class 가사검색trie {
 				}
 				cur = child;
 			}
-			cur.isEnd = true;
 		}
 
 		public int count(final String query) {
