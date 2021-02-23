@@ -22,7 +22,6 @@ public class 작업 {
 		N = Integer.parseInt(st.nextToken());
 
 		graph = new List[N + 1];
-		graph = new List[N + 1];
 		degree = new int[N + 1];
 		time = new int[N + 1];
 		result = new int[N + 1];
