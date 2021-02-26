@@ -15,7 +15,7 @@ public class 광고삽입 {
 		int sec = Integer.parseInt(sta[2]);
 
 		int playtime = hour + min + sec; // 동영상 재생시간
-		long total[] = new long[playtime + 1]; // 재생 구간의 개수 (long으로 안할 시 18번 케이스 탈락)
+		long []total = new long[playtime + 1]; // 재생 구간의 개수 (long으로 안할 시 18번 케이스 탈락)
 		String sta2[] = adv_time.split(":");
 		hour = Integer.parseInt(sta2[0]) * 3600; // 초로 환산
 		min = Integer.parseInt(sta2[1]) * 60;
