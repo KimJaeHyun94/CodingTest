@@ -63,10 +63,8 @@ public class 다리만들기2 {
 		int size = anslist.size();
 		int ans = 0;
 		Collections.sort(anslist, new Comparator<Node>() {
-
 			@Override
 			public int compare(Node a0, Node a1) {
-				
 				return a0.v-a1.v;
 			}
 			
