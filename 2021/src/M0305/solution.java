@@ -8,13 +8,16 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Baaaaaaaaaduk2 {
+public class solution {
 	static int N, M;
 	static int map[][];
-	static ArrayList<Node> zero, two;
+	static ArrayList<Node> two;
 	static int MAX;
 	static boolean visited[][];
+	static boolean visited0[][];
 	static int dirs[][] = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
+	static ArrayList<Node> zero;
+	static int[] selected_blank;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,7 +27,7 @@ public class Baaaaaaaaaduk2 {
 		M = Integer.parseInt(st.nextToken());
 
 		map = new int[N][M];
-		MAX = Integer.MIN_VALUE;
+		MAX = 0;
 		two = new ArrayList<>();
 		zero = new ArrayList<>();
 		for (int r = 0; r < N; r++) {
@@ -33,34 +36,84 @@ public class Baaaaaaaaaduk2 {
 				map[r][c] = Integer.parseInt(st.nextToken());
 				if (map[r][c] == 2) {
 					two.add(new Node(r, c));
-				} else if (map[r][c] == 0) {
-					zero.add(new Node(r, c));
 				}
 			}
 		}
 
-		combination(0,0);
+		if (two.isEmpty()) {
+			System.out.println(0);
+			System.exit(0);
+		}
+
+		visited = new boolean[N][M];
+		visited0 = new boolean[N][M];
+		for (Node child : two) {
+			if (!visited[child.r][child.c]) {
+				findZero(child);
+			}
+		}
+		selected_blank = new int[2];
+		combination(0, 0);
 		System.out.println(MAX);
+	}
+
+	private static void findZero(Node start) {
+		Queue<Node> q = new LinkedList<>();
+		q.add(start);
+		visited[start.r][start.c] = true;
+
+		while (!q.isEmpty()) {
+			Node temp = q.poll();
+
+			for (int d = 0; d < 4; d++) {
+				int dr = temp.r + dirs[d][0];
+				int dc = temp.c + dirs[d][1];
+
+				if (isOK(dr, dc)) {
+					if (map[dr][dc] == 2 && !visited[dr][dc]) {
+						visited[dr][dc] = true;
+						q.add(new Node(dr, dc));
+					} else if (map[dr][dc] == 0 && !visited0[dr][dc]) {
+						visited0[dr][dc] = true;
+						zero.add(new Node(dr, dc));
+					}
+				}
+			}
+		}
 	}
 
 	private static void combination(int start, int count) {
 		if (count == 2) {
-			visited = new boolean[N][M]; // 초기화
-			int cnt = 0;
-			for (Node child : two) {
-				if (!visited[child.r][child.c]) {
-					cnt += BFS(child);
-				}
-			}
-			MAX = Math.max(MAX, cnt);
+			sol();
 			return;
 		}
 
 		for (int i = start; i < zero.size(); i++) {
-			map[zero.get(i).r][zero.get(i).c] = 1;
-			combination(i+1, count+1);
-			map[zero.get(i).r][zero.get(i).c] = 0;
-		} 
+			selected_blank[count] = i;
+			combination(i + 1, count + 1);
+		}
+	}
+
+	private static void sol() {
+
+		for (int i = 0; i < selected_blank.length; i++) {
+			int idx = selected_blank[i];
+			Node p = zero.get(idx);
+			map[p.r][p.c] = 1;
+		}
+		visited = new boolean[N][M]; // 초기화
+		int cnt = 0;
+		for (Node child : two) {
+			if (!visited[child.r][child.c]) {
+				cnt += BFS(child);
+			}
+		}
+		MAX = Math.max(MAX, cnt);
+		for (int i = 0; i < selected_blank.length; i++) {
+			int idx = selected_blank[i];
+			Node p = zero.get(idx);
+			map[p.r][p.c] = 0;
+		}
 	}
 
 	private static int BFS(Node start) {
