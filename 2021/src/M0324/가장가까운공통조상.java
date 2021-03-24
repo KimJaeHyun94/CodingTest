@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class 가장가까운고통조상 {
+public class 가장가까운공통조상 {
 	static int N;
 	static List<Integer> graph[];
 	static int[] parent;
